@@ -1,0 +1,42 @@
+dataset: mall-reviews
+templates:
+  02ff2949-0f45-4d97-941e-6fa4c0afbc2d: !Template
+    answer_choices: negativní ||| neutrální ||| pozitivní
+    id: 02ff2949-0f45-4d97-941e-6fa4c0afbc2d
+    jinja: 'Jaký sentiment má následující recenze? {{comment}} ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - cs
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment1
+    reference: ''
+  2351d12a-e630-4d19-8b41-e199266e38f7: !Template
+    answer_choices: negativní ||| neutrální ||| pozitivní
+    id: 2351d12a-e630-4d19-8b41-e199266e38f7
+    jinja: '{{comment}} Je tato recenze {{"pozitivní, neutrální nebo negativní"}}? ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - cs
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Reviewer Opinion bad good choices
+    reference: ''
+  5f372fb1-795a-47b6-8ddf-c4fd1579e76a: !Template
+    answer_choices: negativní ||| neutrální ||| pozitivní
+    id: 5f372fb1-795a-47b6-8ddf-c4fd1579e76a
+    jinja: "{{comment}} Jaký je sentiment této recenze? {{\"pozitivní, neutrální nebo negativní\"}}? ||| \n{{answer_choices[label]\
+      \ }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - cs
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment2
+    reference: ''
