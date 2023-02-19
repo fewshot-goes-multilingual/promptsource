@@ -1,0 +1,104 @@
+dataset: ctkfacts_nli
+templates:
+  0cc3ae39-3997-4686-8c93-5d51457efa1f: !Template
+    answer_choices: nepravda ||| není jasné ||| pravda
+    id: 0cc3ae39-3997-4686-8c93-5d51457efa1f
+    jinja: '{{evidence}} Za uvedeného předpokladu a na základě znalostí o světe, "{{claim}}" je určitě pravda, nepravda, nebo není jasné? |||
+      {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: MNLI crowdsource
+    reference: Adapted from Williams et al. 2018's instructions to crowdsourcing workers.
+  179eb863-3ece-4e6f-af0f-fcb46d997306: !Template
+    answer_choices: ne ||| možná ||| Ano
+    id: 179eb863-3ece-4e6f-af0f-fcb46d997306
+    jinja: 'Předpokládáme, že {{evidence}} Je možné předpokládat, že "{{claim}}" je pravda? Ano,
+    ne, nebo možná? ||| {{ answer_choices[label] }} '
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: should assume
+    reference: Webson & Pavlick 2021
+  5459237b-97de-4340-bf7b-2939c3f7ca19: !Template
+    answer_choices: ne ||| možná ||| Ano
+    id: 5459237b-97de-4340-bf7b-2939c3f7ca19
+    jinja: Za předpokladu, že {{evidence}} vyplývá, že {{claim}}? Ano, ne, nebo možná?
+      ||| {{ answer_choices[label] }}
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: does it follow that
+    reference: Sanh et al. 2021
+  620aa3fc-d5eb-46f5-a1ee-4c754527aa97: !Template
+    answer_choices: nepravda ||| ani jedno ||| Pravda
+    id: 620aa3fc-d5eb-46f5-a1ee-4c754527aa97
+    jinja: '{{evidence}}
+
+      Otázka: {{claim}} Pravda, nepravda, nebo ani jedno? ||| {{ answer_choices[label]
+      }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: GPT-3 style
+    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
+      is no task identifying tokens like "anli R1: ".'
+  9b613182-c6ab-4427-9221-3d68f6d62765: !Template
+    answer_choices: Ne ||| možná ||| ano
+    id: 9b613182-c6ab-4427-9221-3d68f6d62765
+    jinja: '{{evidence}} Na základě předchozího odseku, je to pravda, že "{{claim}}"?
+      Ne, možná, nebo ano? ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: based on the previous passage
+    reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
+  bab86d5a-4f9c-40db-b619-a7b7d5cae681: !Template
+    answer_choices: nepravda ||| nejasné ||| pravda
+    id: bab86d5a-4f9c-40db-b619-a7b7d5cae681
+    jinja: 'Předpokládejme následovné: {{evidence}}
+
+      Pak následující tvrzení: "{{claim}}" je pravda, nepravda, nebo nejasné? ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: take the following as truth
+    reference: Sanh et al. 2021
+  bcd90047-3a2b-426b-b065-8a418f1317b8: !Template
+    answer_choices: ne ||| možná ||| Ano
+    id: bcd90047-3a2b-426b-b065-8a418f1317b8
+    jinja: 'Předpokládejme následovné: {{evidence}} Pak musí být pravda, že "{{claim}}"?
+      Ano, ne, nebo možná? ||| {{ answer_choices[label] }} '
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - en
+      metrics:
+      - Accuracy
+      original_task: true
+    name: must be true
+    reference: Sanh et al. 2021
