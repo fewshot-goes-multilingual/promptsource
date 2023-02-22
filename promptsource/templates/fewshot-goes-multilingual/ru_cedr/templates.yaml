@@ -1,0 +1,42 @@
+dataset: mall-reviews
+templates:
+  02ff2949-0f45-4d97-941e-6fa4c0afbc2d: !Template
+    answer_choices: радость ||| печаль ||| удивление ||| страх ||| гнев
+    id: 02ff2949-0f45-4d97-941e-6fa4c0afbc2d
+    jinja: 'Каково настроение следующего обзора? {{text}} Варианты: радость, печаль, гнев, гнев ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      languages:
+      - ru
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment1
+    reference: ''
+  2351d12a-e630-4d19-8b41-e199266e38f7: !Template
+    answer_choices: радость ||| печаль ||| удивление ||| страх ||| гнев
+    id: 2351d12a-e630-4d19-8b41-e199266e38f7
+    jinja: '{{text}} Это обзор радят, печал, мужских, страх или гнев? ||| {{ answer_choices[label] }}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - ru
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Reviewer Opinion bad good choices
+    reference: ''
+  5f372fb1-795a-47b6-8ddf-c4fd1579e76a: !Template
+    answer_choices: радость ||| печаль ||| удивление ||| страх ||| гнев
+    id: 5f372fb1-795a-47b6-8ddf-c4fd1579e76a
+    jinja: "{{text}} Каково настроение этого обзора? радость, печаль, удивление, страх или гнев? ||| \n{{answer_choices[label]\
+      \ }}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      languages:
+      - ru
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment2
+    reference: ''

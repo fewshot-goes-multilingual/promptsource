@@ -69,5 +69,5 @@ verbalize_all_templates(dataset[1], templates)
 # NLI:
 dataset = load_dataset("ctu-aic/ctkfacts_nli", split="train")
 
-templates = DatasetTemplates('ctu-aic/ctkfacts_nli')
+templates = DatasetTemplates('fewshot-goes-multilingual/cs_ctkfacts_nli')
 verbalize_all_templates(dataset[1], templates)
