@@ -30,10 +30,9 @@ templates:
     name: should assume
     reference: Webson & Pavlick 2021
   5459237b-97de-4340-bf7b-2939c3f7ca19: !Template
-    answer_choices: Да ||| возможно ||| нет 
+    answer_choices: Да ||| возможно ||| нет
     id: 5459237b-97de-4340-bf7b-2939c3f7ca19
-    jinja: Given that {{premise}} Does it follow that {{hypothesis}} Yes, no, or maybe?
-      ||| {{ answer_choices[label] }} 
+    jinja: 'Учитывая {{premise}}, следует ли из этого, что "{{hypothesis}}"? Да, нет или возможно? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -44,12 +43,9 @@ templates:
     name: does it follow that
     reference: Sanh et al. 2021
   620aa3fc-d5eb-46f5-a1ee-4c754527aa97: !Template
-    answer_choices: ПравДа ||| Ни ||| ЛОЖЬ 
+    answer_choices: правда ||| ни то, ни другое ||| ложь
     id: 620aa3fc-d5eb-46f5-a1ee-4c754527aa97
-    jinja: '{{premise}}
-
-       Вопрос: {{hypothesis}} верна, неверна или ни то, ни другое? ||| {{ answer_choices[label]
-       }}' 
+    jinja: '{{premise}} Утверждение {{hypothesis}} - это правда, ложь или ни то, ни другое? ||| {{ answer_choices[label]}}'
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
