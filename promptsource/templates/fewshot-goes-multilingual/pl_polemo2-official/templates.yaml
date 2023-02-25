@@ -1,0 +1,26 @@
+dataset: polemo2-official
+templates:
+  d3f10edd-7a15-4fc1-8cb0-d943a786c602: !Template
+    answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
+    id: d3f10edd-7a15-4fc1-8cb0-d943a786c602
+    jinja: "\"{{text}}\" Ten tekst jest pozytywny, negatywny, neutralny czy dwuznaczny?\
+      \ ||| {{answer_choices[target]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment1
+    reference: ''
+  9cba7b7b-0cb2-4c20-bdc4-635bd413e9ee: !Template
+    answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
+    id: 9cba7b7b-0cb2-4c20-bdc4-635bd413e9ee
+    jinja: "Oceń ten tekst jako pozytywny, negatywny, neutralny lub dwuznaczny. \n\nText: {{text}} \
+      \ ||| {{answer_choices[target]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment2
+    reference: ''
