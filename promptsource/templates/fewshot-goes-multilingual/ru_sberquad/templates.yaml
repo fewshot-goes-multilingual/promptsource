@@ -3,13 +3,13 @@ templates:
   3d85b5b0-51db-4d72-8ead-d0b3654025ee: !Template
     answer_choices: null
     id: 3d85b5b0-51db-4d72-8ead-d0b3654025ee
-    jinja: 'Посмотрите на абзац ниже и ответьте на следующий вопрос:
+    jinja: 'Посмотрите на абзац ниже и ответьте на следующий вопрос: #'Прочитайте абзац ниже и ответьте на следующий вопрос:
 
 
-      Абзац: {{context}}
+      Абзац: {{context}} # ok
 
 
-      Вопрос: {{question}}
+      Вопрос: {{question}} # ok
 
       |||
 
@@ -26,13 +26,13 @@ templates:
   5a3c2d11-9469-46f6-88c2-f7e159a9742b: !Template
     answer_choices: null
     id: 5a3c2d11-9469-46f6-88c2-f7e159a9742b
-    jinja: '{{context}}
+    jinja: '{{context}} # ok
 
 
-      Вопрос: {{question}}
+      Вопрос: {{question}} # ok
 
 
-      Отвечать: ||| {{answers["text"][0]}}'
+      Отвечать: ||| {{answers["text"][0]}}' # Ответ: ||| {{answers["text"][0]}}' 
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -45,7 +45,7 @@ templates:
   7c13b5ba-abfc-4b68-9a36-5430a0b0e580: !Template
     answer_choices: null
     id: 7c13b5ba-abfc-4b68-9a36-5430a0b0e580
-    jinja: '{{context}}\n\nСо ссылкой на абзац выше, {{question}} ||| {{answers["text"][0]}}'
+    jinja: '{{context}}\n\nСо ссылкой на абзац выше, {{question}} ||| {{answers["text"][0]}}' # ok
     metadata: !TemplateMetadata
       choices_in_prompt: false
       languages:
@@ -58,13 +58,13 @@ templates:
   e153c4cd-6757-487a-8fe6-da7e88ec3e47: !Template
     answer_choices: null
     id: e153c4cd-6757-487a-8fe6-da7e88ec3e47
-    jinja: '{{context}}
+    jinja: '{{context}} # ok
 
 
-      Вопрос: {{question}}
+      Вопрос: {{question}} # ok
 
 
-      Ссылка на раздел выше является правильным ответом на вопрос
+      Ссылка на раздел выше является правильным ответом на вопрос # Ссылка на абзац выше является правильным ответом на вопрос
       ||| {{answers["text"][0]}}'
     metadata: !TemplateMetadata
       choices_in_prompt: false
