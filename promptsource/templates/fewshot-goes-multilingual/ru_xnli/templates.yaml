@@ -5,7 +5,7 @@ templates:
     id: 0cc3ae39-3997-4686-8c93-5d51457efa1f
     jinja: '{{premise}} Используя только приведенное выше описание и то, что вы знаете о
        мир, "{{hypothesis}}" определенно верна, неверна или неубедительна? |||
-       {{ answer_choices[label] }}'
+       {{ answer_choices[label] }}' # {{premise}} Используя только приведенное выше описание и то, что вы знаете о мире, утверждение "{{hypothesis}}" определенно верно, неверно или неубедительно? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -19,7 +19,7 @@ templates:
     answer_choices: Да ||| Возможно ||| Нет
     id: 179eb863-3ece-4e6f-af0f-fcb46d997306
     jinja: 'Учитывая {{premise}} Должны ли мы предположить, что "{{hypothesis}}" верна? Да,
-       нет или можно? ||| {{ answer_choices[label] }}'
+       нет или можно? ||| {{ answer_choices[label] }}' # 'Учитывая {{premise}} Должны ли мы предположить, что верно предположение "{{hypothesis}}"? Да, нет или возможно? 
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -30,10 +30,10 @@ templates:
     name: should assume
     reference: Webson & Pavlick 2021
   5459237b-97de-4340-bf7b-2939c3f7ca19: !Template
-    answer_choices: Да ||| Возможно ||| Нет
+    answer_choices: Да ||| Возможно ||| Нет # ok
     id: 5459237b-97de-4340-bf7b-2939c3f7ca19
     jinja: Given that {{premise}} Does it follow that {{hypothesis}} Yes, no, or maybe?
-      ||| {{ answer_choices[label] }}
+      ||| {{ answer_choices[label] }} # 'Учитывая {{premise}}, следует ли из этого, что "{{hypothesis}}"? Да, нет или возможно? ||| {{ answer_choices[label] }}
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -44,12 +44,12 @@ templates:
     name: does it follow that
     reference: Sanh et al. 2021
   620aa3fc-d5eb-46f5-a1ee-4c754527aa97: !Template
-    answer_choices: Правда ||| Ни ||| ЛОЖЬ
+    answer_choices: Правда ||| Ни ||| ЛОЖЬ # Правда ||| ни то, ни другое ||| ложь
     id: 620aa3fc-d5eb-46f5-a1ee-4c754527aa97
     jinja: '{{premise}}
 
        Вопрос: {{hypothesis}} верна, неверна или ни то, ни другое? ||| {{ answer_choices[label]
-       }}'
+       }}' # '{{premise}} Гипотеза {{hypothesis}} верна, неверна или ни то, ни другое? ||| {{ answer_choices[label]}}'
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -61,10 +61,10 @@ templates:
     reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
       is no task identifying tokens like "anli R1: ".'
   9b613182-c6ab-4427-9221-3d68f6d62765: !Template
-    answer_choices: Да ||| Возможно ||| Нет
+    answer_choices: Да ||| Возможно ||| Нет # ok
     id: 9b613182-c6ab-4427-9221-3d68f6d62765
     jinja: '{{premise}} Верно ли, исходя из предыдущего отрывка, что "{{hypothesis}}"?
-       Да, нет, а может быть? ||| {{ answer_choices[label] }}'
+       Да, нет, а может быть? ||| {{ answer_choices[label] }}' # '{{premise}} Исходя из предыдущего отрывка, верно ли, что "{{hypothesis}}"? Да, нет, или возможно? ||| {{ answer_choices[label] }}' 
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -75,10 +75,10 @@ templates:
     name: based on the previous passage
     reference: "Adapted from the BoolQ prompts in Schick & Sch\xFCtze 2021."
   a850110d-f1a3-49b4-949a-d3bfe9f81344: !Template
-    answer_choices: Да ||| Возможно ||| Нет
+    answer_choices: Да ||| Возможно ||| Нет # ok
     id: a850110d-f1a3-49b4-949a-d3bfe9f81344
     jinja: '{{premise}} Имеем ли мы право говорить, что "{{hypothesis}}"? Да нет,
-       или, может быть? ||| {{ answer_choices[label] }}'
+       или, может быть? ||| {{ answer_choices[label] }}' # '{{premise}} Имеем ли мы право говорить, что "{{hypothesis}}"? Да, нет, или возможно? ||| {{ answer_choices[label] }}' 
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -89,12 +89,12 @@ templates:
     name: justified in saying
     reference: Webson & Pavlick 2021
   bab86d5a-4f9c-40db-b619-a7b7d5cae681: !Template
-    answer_choices: Правда ||| Неубедительно ||| ЛОЖЬ
+    answer_choices: Правда ||| Неубедительно ||| ЛОЖЬ # Правда ||| Неубедительно ||| Ложь
     id: bab86d5a-4f9c-40db-b619-a7b7d5cae681
     jinja: 'Примите за истину следующее: {{premise}}
 
        Тогда следующее утверждение: "{{hypothesis}}" есть "правда", "ложь" или
-       "неубедительно"? ||| {{ answer_choices[label] }}'
+       "неубедительно"? ||| {{ answer_choices[label] }}' # 'Примите за истину следующее: {{premise}} Тогда следующее утверждение: "{{hypothesis}}" будет правдой, ложью или неубедительно? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
@@ -105,10 +105,10 @@ templates:
     name: take the following as truth
     reference: Sanh et al. 2021
   bcd90047-3a2b-426b-b065-8a418f1317b8: !Template
-    answer_choices: Да ||| Возможно ||| Нет
+    answer_choices: Да ||| Возможно ||| Нет # ok
     id: bcd90047-3a2b-426b-b065-8a418f1317b8
     jinja: 'Учитывая, что {{premise}} Следовательно, должно быть верно, что "{{hypothesis}}"?
-       Да, нет, а может быть? ||| {{ answer_choices[label] }} '
+       Да, нет, а может быть? ||| {{ answer_choices[label] }} ' # 'Учитывая, что {{premise}} Следовательно, должно быть верно, что "{{hypothesis}}"?Да, нет, или возможно? ||| {{ answer_choices[label] }} '
     metadata: !TemplateMetadata
       choices_in_prompt: true
       languages:
