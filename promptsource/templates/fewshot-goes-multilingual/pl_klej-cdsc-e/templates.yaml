@@ -1,0 +1,48 @@
+dataset: allegro/klej-cdsc-e
+templates:
+  b9461d5f-6bbc-426b-a50b-b47de0774ae7: !Template
+    answer_choices: niezwiązane ||| potwierdzeniem ||| zaprzeczeniem
+    id: b9461d5f-6bbc-426b-a50b-b47de0774ae7
+    jinja: "\"{{sentence_A}}\" Na podstawie tego, można powiedzieć, że zdanie \"{{sentence_B}}\" jest ||| {{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: nli1
+    reference: ''
+  200f26be-1517-44b8-a4f1-aa20ee133850: !Template
+    answer_choices: nie wiadomo ||| tak ||| nie
+    id: 200f26be-1517-44b8-a4f1-aa20ee133850
+    jinja: "Oceń czy poniższe zdania są zgodne ze sobą. \n\nZdanie A: {{sentence_A}} \nZdanie\
+      \ B: {{sentence_B}} \n\nZgodność: ||| {{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: nli2
+    reference: ''
+  12ffa8d9-d0a0-41e8-844a-57bc9de4f171: !Template
+    answer_choices: niezwiązane ||| potwierdzenie ||| zaprzeczenie
+    id: 12ffa8d9-d0a0-41e8-844a-57bc9de4f171
+    jinja: "Hipotezę i przesłankę można powiązać jako potwierdzenie, zaprzeczenie lub niezwiązane. \n\n\
+      Hipoteza: {{sentence_A}} \nPrzesłanka: {{sentence_B}} \n\nPowiązanie: ||| {{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: nli3
+    reference: ''
+  c871c80f-6ac3-419d-be46-1f0cd127fc44: !Template
+    answer_choices: niezwiązana ||| potwierdzeniem ||| zaprzeczeniem
+    id: c871c80f-6ac3-419d-be46-1f0cd127fc44
+    jinja: "Hipoteza: {{sentence_A}} \nPrzesłanka: {{sentence_B}} \nCzy przesłanka jest dla hipotezy potwierdzeniem, zaprzeczeniem czy jest niezwiązana? ||| {{answer_choices[label]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: nli4
+    reference: ''

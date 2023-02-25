@@ -16,4 +16,16 @@ templates = DatasetTemplates("fewshot-goes-multilingual/pl_polemo2-official")
 
 verbalize_all_templates(dataset[1], templates)
 
+# NLI
+mapping = {
+    "NEUTRAL": 0,
+    "ENTAILMENT": 1,
+    "CONTRADICTION": 2
+}
+dataset = load_dataset("allegro/klej-cdsc-e", split="test")
+dataset = dataset.map(lambda x: {"label": int(mapping[x["entailment_judgment"]])})
+templates = DatasetTemplates("fewshot-goes-multilingual/pl_klej-cdsc-e")
+
+verbalize_all_templates(dataset[1], templates)
+
 print("done")

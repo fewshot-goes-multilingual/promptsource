@@ -1,4 +1,4 @@
-dataset: polemo2-official
+dataset: clarin-pl/polemo2-official
 templates:
   d3f10edd-7a15-4fc1-8cb0-d943a786c602: !Template
     answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
