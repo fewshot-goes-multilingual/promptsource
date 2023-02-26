@@ -1,7 +1,7 @@
 from datasets import load_dataset, Dataset
 from promptsource.templates import DatasetTemplates
 from typing import Dict, Any
-from utils_pl import political_advertasing_translations
+from utils_pl import political_advertasing_translations, kpwr_ner_translations
 
 
 def verbalize_all_templates(sample: Dict[str, Any], all_templates: DatasetTemplates) -> None:
@@ -66,11 +66,25 @@ templates = DatasetTemplates("fewshot-goes-multilingual/pl_klej-cdsc-e")
 
 verbalize_all_templates(dataset[1], templates)
 
-# NER
+# NER - political advertising
 dataset = load_dataset("laugustyniak/political-advertising-pl", split="train")
 dataset_processed = process_ner_dataset(dataset, political_advertasing_translations, "tags")
 templates = DatasetTemplates("fewshot-goes-multilingual/pl_political-advertising-pl")
 
+verbalize_all_templates(dataset_processed[1], templates)
+
+# NER - generic
+dataset = load_dataset("clarin-pl/kpwr-ner", split="train")
+dataset_processed = process_ner_dataset(dataset, kpwr_ner_translations, "ner")
+
+templates = DatasetTemplates("fewshot-goes-multilingual/pl_kpwr-ner")
+
+# All classes
+dataset_processed = dataset_processed.map(lambda x: {"label_type_selected": kpwr_ner_translations[x["label_type"]]})
+verbalize_all_templates(dataset_processed[1], templates)
+
+# Only generic classes
+dataset_processed = dataset_processed.map(lambda x: {"label_type_selected": kpwr_ner_translations["_".join(x["label_type"].split("_")[0:2])]})
 verbalize_all_templates(dataset_processed[1], templates)
 
 print("done")
