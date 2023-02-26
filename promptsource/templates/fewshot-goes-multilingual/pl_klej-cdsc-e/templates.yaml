@@ -3,9 +3,9 @@ templates:
   b9461d5f-6bbc-426b-a50b-b47de0774ae7: !Template
     answer_choices: niezwiązane ||| potwierdzeniem ||| zaprzeczeniem
     id: b9461d5f-6bbc-426b-a50b-b47de0774ae7
-    jinja: "\"{{sentence_A}}\" Na podstawie tego, można powiedzieć, że zdanie \"{{sentence_B}}\" jest ||| {{answer_choices[label]}}"
+    jinja: "\"{{sentence_A}}\" Na podstawie tego, można powiedzieć, że zdanie \"{{sentence_B}}\" jest potwierdzeniem, zaprzeczeniem czy niezwiązane? ||| {{answer_choices[label]}}"
     metadata: !TemplateMetadata
-      choices_in_prompt: false
+      choices_in_prompt: true
       metrics:
       - Accuracy
       original_task: true
@@ -14,10 +14,10 @@ templates:
   200f26be-1517-44b8-a4f1-aa20ee133850: !Template
     answer_choices: nie wiadomo ||| tak ||| nie
     id: 200f26be-1517-44b8-a4f1-aa20ee133850
-    jinja: "Oceń czy poniższe zdania są zgodne ze sobą. \n\nZdanie A: {{sentence_A}} \nZdanie\
+    jinja: "Oceń czy poniższe zdania są zgodne ze sobą - tak, nie czy nie wiadomo? \n\nZdanie A: {{sentence_A}} \nZdanie\
       \ B: {{sentence_B}} \n\nZgodność: ||| {{answer_choices[label]}}"
     metadata: !TemplateMetadata
-      choices_in_prompt: false
+      choices_in_prompt: true
       metrics:
       - Accuracy
       original_task: true

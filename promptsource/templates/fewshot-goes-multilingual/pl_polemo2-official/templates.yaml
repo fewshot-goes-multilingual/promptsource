@@ -27,9 +27,9 @@ templates:
   b015ae04-8e4c-432e-b3e3-8af6f5e923f7: !Template
     answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
     id: b015ae04-8e4c-432e-b3e3-8af6f5e923f7
-    jinja: "Oceń wydźwięk tego tekstu. \n\nTekst: {{text}} \n\nWydźwięk: ||| {{answer_choices[target]}}"
+    jinja: "Oceń wydźwięk tego tekstu jako {{pozytywny, negatywny, neutralny lub dwuznaczny}}. \n\nTekst: {{text}} \n\nWydźwięk: ||| {{answer_choices[target]}}"
     metadata: !TemplateMetadata
-      choices_in_prompt: false
+      choices_in_prompt: true
       metrics:
       - Accuracy
       original_task: true
