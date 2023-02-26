@@ -1,6 +1,6 @@
 from datasets import load_dataset, Dataset
 from promptsource.templates import DatasetTemplates
-from typing import Dict, Any
+from typing import Callable, Dict, Any
 from utils_pl import political_advertasing_translations, kpwr_ner_translations
 
 
@@ -11,7 +11,12 @@ def verbalize_all_templates(sample: Dict[str, Any], all_templates: DatasetTempla
         print("INPUT: ", result[0])
         print("OUTPUT: ", result[1])
 
-def process_ner_dataset(dataset: Dataset, translations: Dict[str, str], output_column: str) -> Dataset:
+def process_ner_dataset(
+    dataset: Dataset, 
+    translations: Dict[str, str], 
+    output_column: str, 
+    label_mapping: Callable[[str], str] = None
+) -> Dataset:
     names = dataset.info.features[output_column].feature.names
     dataset = dataset.map(lambda x: {"tag_names": [names[i] for i in x[output_column]]})
 
@@ -22,6 +27,9 @@ def process_ner_dataset(dataset: Dataset, translations: Dict[str, str], output_c
         for idx, tag in enumerate(item["tag_names"]):
             if tag != "O":
                 category = tag.split("-")[1]
+
+                if label_mapping is not None:
+                    category = label_mapping(category)
                 position = tag.split("-")[0]
                 if position == "B":
                     seen_entities.append({
@@ -45,7 +53,7 @@ def process_ner_dataset(dataset: Dataset, translations: Dict[str, str], output_c
         samples.extend(seen_entities)
 
     dataset_flat = Dataset.from_list(samples)
-    dataset_flat = dataset_flat.map(lambda x: {"label_type_pl": translations[x["label_type"]]})
+    dataset_flat = dataset_flat.map(lambda x: {"label_type_selected": translations[x["label_type"]]})
     return dataset_flat
 
 # Sentiment
@@ -75,16 +83,14 @@ verbalize_all_templates(dataset_processed[1], templates)
 
 # NER - generic
 dataset = load_dataset("clarin-pl/kpwr-ner", split="train")
-dataset_processed = process_ner_dataset(dataset, kpwr_ner_translations, "ner")
-
 templates = DatasetTemplates("fewshot-goes-multilingual/pl_kpwr-ner")
 
 # All classes
-dataset_processed = dataset_processed.map(lambda x: {"label_type_selected": kpwr_ner_translations[x["label_type"]]})
+dataset_processed = process_ner_dataset(dataset, kpwr_ner_translations, "ner")
 verbalize_all_templates(dataset_processed[1], templates)
 
 # Only generic classes
-dataset_processed = dataset_processed.map(lambda x: {"label_type_selected": kpwr_ner_translations["_".join(x["label_type"].split("_")[0:2])]})
+dataset_processed = process_ner_dataset(dataset, kpwr_ner_translations, "ner", lambda x: "_".join(x.split("_")[0:2]))
 verbalize_all_templates(dataset_processed[1], templates)
 
 print("done")
