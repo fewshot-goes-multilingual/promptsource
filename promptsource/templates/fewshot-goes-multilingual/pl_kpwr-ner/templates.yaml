@@ -1,0 +1,49 @@
+dataset: clarin-pl/kpwr-ner
+templates:
+  56ed5ba2-6711-4bbc-a880-e9eb5a51c11d: !Template
+    answer_choices: null
+    id: 56ed5ba2-6711-4bbc-a880-e9eb5a51c11d
+    jinja: "Jaka encja typu {{label_type_selected}} znajduje się w następującym tekście? \"{{text}}\"\
+      \ ||| {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: what_entity_type
+    reference: ''
+  54b6b665-6646-4c8e-afd8-6053ed9b2190: !Template
+    answer_choices: null
+    id: 54b6b665-6646-4c8e-afd8-6053ed9b2190
+    jinja: "\"{{text}}\" {{label_type_selected}} w tym tekście to ||| {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: fill_in_entity
+    reference: ''
+  51865b61-5b6a-45b8-bfc7-23329e62f99e: !Template
+    answer_choices: null
+    id: 51865b61-5b6a-45b8-bfc7-23329e62f99e
+    jinja: "\"{{text}}\" Jaka encja typu {{label_type_selected}} znajduje się w poprzednim akapicie?\
+      \ ||| {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: what_entity_type_reverse
+    reference: ''
+  c756b8c0-f783-4236-a177-e3708ec2806f: !Template
+    answer_choices: null
+    id: c756b8c0-f783-4236-a177-e3708ec2806f
+    jinja: "Znajdź encje typu {{label_type_selected}} w następującym tekście: {{text}} |||\
+      \ {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: instruction_to_find_entity
+    reference: ''

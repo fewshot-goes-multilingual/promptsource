@@ -1,0 +1,49 @@
+dataset: laugustyniak/political-advertising-pl
+templates:
+  09360df1-819a-444b-981c-3eea3dd09f10: !Template
+    answer_choices: null
+    id: 09360df1-819a-444b-981c-3eea3dd09f10
+    jinja: "Jaka encja typu {{label_type_selected}} znajduje się w następującym tekście? \"{{text}}\"\
+      \ ||| {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: what_entity_type
+    reference: ''
+  d833a8f6-d595-4e79-be2f-23ee660eda35: !Template
+    answer_choices: null
+    id: d833a8f6-d595-4e79-be2f-23ee660eda35
+    jinja: "\"{{text}}\" {{label_type_selected}} w tym tekście to ||| {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: fill_in_entity
+    reference: ''
+  ebde979b-2ca8-416e-9668-559d8f4fc1f5: !Template
+    answer_choices: null
+    id: ebde979b-2ca8-416e-9668-559d8f4fc1f5
+    jinja: "\"{{text}}\" Jaka encja typu {{label_type_selected}} znajduje się w poprzednim akapicie?\
+      \ ||| {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: what_entity_type_reverse
+    reference: ''
+  fdf45eca-ce05-4170-bd73-ae619e47ac03: !Template
+    answer_choices: null
+    id: fdf45eca-ce05-4170-bd73-ae619e47ac03
+    jinja: "Znajdź encje typu {{label_type_selected}} w następującym tekście: {{text}} |||\
+      \ {{label}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: false
+      metrics:
+      - Accuracy
+      original_task: true
+    name: instruction_to_find_entity
+    reference: ''
