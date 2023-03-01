@@ -1,0 +1,48 @@
+dataset: clarin-pl/polemo2-official
+templates:
+  d3f10edd-7a15-4fc1-8cb0-d943a786c602: !Template
+    answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
+    id: d3f10edd-7a15-4fc1-8cb0-d943a786c602
+    jinja: "\"{{text}}\" Ten tekst jest pozytywny, negatywny, neutralny czy dwuznaczny?\
+      \ ||| {{answer_choices[target]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment1
+    reference: ''
+  9cba7b7b-0cb2-4c20-bdc4-635bd413e9ee: !Template
+    answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
+    id: 9cba7b7b-0cb2-4c20-bdc4-635bd413e9ee
+    jinja: "Oceń ten tekst jako pozytywny, negatywny, neutralny lub dwuznaczny. \n\nTekst: {{text}} \
+      \ ||| {{answer_choices[target]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment2
+    reference: ''
+  b015ae04-8e4c-432e-b3e3-8af6f5e923f7: !Template
+    answer_choices: neutralny ||| negatywny ||| pozytywny ||| dwuznaczny
+    id: b015ae04-8e4c-432e-b3e3-8af6f5e923f7
+    jinja: "Oceń wydźwięk tego tekstu jako pozytywny, negatywny, neutralny lub dwuznaczny. \n\nTekst: {{text}} \n\nWydźwięk: ||| {{answer_choices[target]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment3
+    reference: ''
+  26f6d5d4-6eca-4551-b10a-cf52379774a0: !Template
+    answer_choices: neutralna ||| negatywna ||| pozytywna ||| dwuznaczna
+    id: 26f6d5d4-6eca-4551-b10a-cf52379774a0
+    jinja: "\"{{text}}\" Jaka jest ta recenzja? Jest pozytywna, negatywna, neutralna czy dwuznaczna?: ||| {{answer_choices[target]}}"
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: sentiment4
+    reference: ''
