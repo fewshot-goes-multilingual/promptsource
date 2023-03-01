@@ -1,7 +1,7 @@
 dataset: ru_xnli
 templates:
   0cc3ae39-3997-4686-8c93-5d51457efa1f: !Template
-    answer_choices: верна ||| неверна ||| неубедительна
+    answer_choices: верна ||| неубедительна ||| неверна
     id: 0cc3ae39-3997-4686-8c93-5d51457efa1f
     jinja: '{{premise}} Используя только приведенное выше описание и то, что вы знаете о
        мир, "{{hypothesis}}" определенно верна, неверна или неубедительна? |||
@@ -42,23 +42,6 @@ templates:
       original_task: true
     name: does it follow that
     reference: Sanh et al. 2021
-  620aa3fc-d5eb-46f5-a1ee-4c754527aa97: !Template
-    answer_choices: Правда ||| Ни ||| ЛОЖЬ
-    id: 620aa3fc-d5eb-46f5-a1ee-4c754527aa97
-    jinja: '{{premise}}
-
-       Вопрос: {{hypothesis}} верна, неверна или ни то, ни другое? ||| {{ answer_choices[label]
-       }}'
-    metadata: !TemplateMetadata
-      choices_in_prompt: true
-      languages:
-      - ru
-      metrics:
-      - Accuracy
-      original_task: true
-    name: GPT-3 style
-    reference: 'Same as reported in Figure G7 of the GPT-3 paper, except that there
-      is no task identifying tokens like "anli R1: ".'
   9b613182-c6ab-4427-9221-3d68f6d62765: !Template
     answer_choices: Да ||| Возможно ||| Нет
     id: 9b613182-c6ab-4427-9221-3d68f6d62765
