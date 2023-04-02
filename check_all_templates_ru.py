@@ -19,7 +19,7 @@ entity_type_ru = {"PER": "человек", "LOC": "место", "ORG": "орга
 
 # transform dataset into per-entity form
 samples = []
-for item in tqdm.tqdm(dataset["train"].select(range(10000))):  # remove the select() to obtain the whole dataset
+for item in tqdm.tqdm(dataset["train"]):  # remove the select() to obtain the whole dataset
     text = " ".join(item["words"])
     seen_entities = []
     for entity_type in ["PER", "LOC", "ORG"]:

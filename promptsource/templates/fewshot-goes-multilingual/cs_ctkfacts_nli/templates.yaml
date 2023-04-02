@@ -62,7 +62,7 @@ templates:
   9b613182-c6ab-4427-9221-3d68f6d62765: !Template
     answer_choices: Ne ||| možná ||| ano
     id: 9b613182-c6ab-4427-9221-3d68f6d62765
-    jinja: '{{evidence}} Na základě předchozího odseku, je to pravda, že "{{claim}}"?
+    jinja: '{{evidence}} Na základě předchozího odstavce, je to pravda, že "{{claim}}"?
       Ne, možná, nebo ano? ||| {{ answer_choices[label] }}'
     metadata: !TemplateMetadata
       choices_in_prompt: true

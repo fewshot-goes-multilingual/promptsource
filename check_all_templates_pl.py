@@ -11,6 +11,7 @@ def verbalize_all_templates(sample: Dict[str, Any], all_templates: DatasetTempla
         print("INPUT: ", result[0])
         print("OUTPUT: ", result[1])
 
+
 def process_ner_dataset(
     dataset: Dataset, 
     translations: Dict[str, str], 
